@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block new_css %}
+    <link rel="stylesheet" href="{% static 'movie_details_style.css' %}">
+{% endblock %}
+{% block body %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<div class="container nik-custom">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>MOVIE DESCRIPTION</h5>
+                <p class="mb-0">{{ movie.movie_description }}</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box">
+                <p><b>Name:</b> {{ movie.movie_name }}</p>
+                <p><b>Genre:</b> {{ movie.movie_genre }}</p>
+                <p><b>Rating:</b> {{ movie.movie_rating }}/10</p>
+                <p class="mb-0"><b>Price:</b> ${{ movie.movie_price }}</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box mt-0 mb-0">
+                <p class="mb-0">
+                    <span class="fw-bold mr-10 va-middle hide-mobile">Order your ticket:</span>
+                    <a href="{% url 'cinema:order' movie.id %}" class="btn btn-custom">Click here!</a>
+                    {% if user.is_superuser %}
+                        <form action="{% url 'cinema:delete' movie.id %}" method="post" style="display: inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="movie_id" value="{{ movie.id }}"/>
+                           <button type="submit" class="btn btn-custom">
+                               Delete
+                           </button>
+                        </form>
+                        <form action="{% url 'cinema:edit' movie.id %}" method="get" style="display: inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="movie_id" value="{{ movie.id }}"/>
+                           <button type="submit" class="btn btn-custom">
+                               Edit
+                           </button>
+                        </form>
+                    {% endif %}
+                </p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img src="{{ movie.movie_photo.url }}" alt="project-image" class="rounded" style="max-width: 800px;max-height: 600px;">
+        </div><!-- / column -->
+    </div>
+</div>
+{% endblock %}

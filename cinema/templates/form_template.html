@@ -1,0 +1,9 @@
+{% for field in form_user %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small" style="color:white;">{{ field.errors }}</span>
+        </div>
+        <label class="control-label col-sm-2" for="song_title" style="color: white">{{ field.label_tag }}</label>
+        <div class="col-sm-10">{{ field }}</div>
+    </div>
+{% endfor %}

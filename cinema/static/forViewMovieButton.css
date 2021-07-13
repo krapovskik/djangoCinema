@@ -1,0 +1,27 @@
+.btn-custom{
+    background:#34302F;
+    color:white;
+}
+.btn-custom:hover{
+    background: darkred;
+    color: white;
+}
+#viewMovie{
+    position: absolute;
+    left: 30px;
+    bottom: 35px;
+}
+#homeViewMovie{
+    background: darkred;
+    color: white;
+}
+#homeViewMovie:hover{
+    background: #760900;
+    color: white;
+}
+.link-custom{
+    color: darkred;
+}
+.link-custom:hover{
+    color: #760900;
+}

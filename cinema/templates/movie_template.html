@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Add {% endblock %}
+{% block body %}
+    <div class="container-fluid" style="margin-left: 27.5%; margin-top: 5%;">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="panel panel-default" style="background: rgba(160, 160, 160,0.3);width: 700px;">
+                    <div class="panel-body" style="background: rgba(160, 160, 160,0.3); ">
+                        <h3 style="text-align: center; padding-bottom: 10px;color: white;">Add new movie</h3>
+                        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <span class="text-danger small">{{ field.errors }}</span>
+                                        </div>
+                                        <label class="control-label col-sm-2" for="movie_title" style="color:white;width: fit-content;">{{ field.label_tag }}</label>
+                                        <div class="col-sm-10" style="width: fit-content">{{ field }}</div>
+                                </div>
+                            {% endfor %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-custom">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

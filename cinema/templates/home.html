@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block Title %}
+    Home
+{% endblock %}
+{% block body %}
+    <div class="jumbotron text-center" style="background: rgba(160, 160, 160,0.3);position: absolute;margin-top: 10%;margin-left: 12.5%;border-radius: 5px;padding: 5% 5% 5% 5%">
+        <h1 style="color: white;">
+            All your favourite movies in one place
+        </h1>
+        <a href="{% url 'cinema:movie' %}" class="btn btn-lg active" id="homeViewMovie" role="button" aria-pressed="true" style="margin-top: 5%;">View movies</a>
+
+    </div>
+
+{% endblock %}

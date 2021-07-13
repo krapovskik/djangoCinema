@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block Title %}Title{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chango" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'forViewMovieButton.css' %}" />
+    {% block new_css %}{% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block new_script %}{% endblock %}
+</head>
+<body>
+    <nav class="nav navbar-inverse">
+    <div class="container-fluid">
+        <!-- Header !-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="{% url 'cinema:home' %}" class="navbar-brand">Cinema
+            </a>
+        </div>
+        <!-- Items !-->
+        <div class="collapse navbar-collapse" id="topNavBar">
+
+            <ul class="nav navbar-nav">
+                <li class="">
+                    <a href="{% url 'cinema:home' %}">
+                        <span aria-hidden="true"></span>
+                        Home
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{% url 'cinema:movie' %}">
+                        <span aria-hidden="true"></span>
+                        Movies
+                    </a>
+                </li>
+            </ul>
+
+            {% if user.is_authenticated %}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        {{ user.first_name }}
+                    </a>
+                </li>
+                {% if user.is_superuser %}
+                    <li class="">
+                        <a href="{% url 'cinema:add_movie' %}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            Add
+                        </a>
+                    </li>
+                {% endif %}
+                <li class="">
+                    <a href="#" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        Log out
+                    </a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Confirmation</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Are you sure you want to logout?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'cinema:logout' %}" class="btn btn-custom btn-sm active" role="button" aria-pressed="true">Yes</a>
+                                <a href="{% url 'cinema:home' %}" class="btn btn-custom btn-sm active" role="button" aria-pressed="true">No</a>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                </li>
+            </ul>
+            {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="{% url 'cinema:register' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Register
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{% url 'cinema:login' %}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        Log in
+                    </a>
+                </li>
+                </ul>
+            {% endif %}
+
+        </div>
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>

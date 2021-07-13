@@ -1,0 +1,8 @@
+body{
+    background: white url("images/cienma-background.jpg");
+    background-size: cover;
+}
+
+.navbar-brand{
+    font-family: 'Chango', cursive;
+}
