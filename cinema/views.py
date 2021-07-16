@@ -130,10 +130,11 @@ def movieOrder(request, pk):
         try:
             ticket_code = random.randint(100000, 1000000)
             send_mail('Ticket order',
+                      f'Movie name: {movie.movie_name}\n'
                       f'Your ticket code: {ticket_code}\n'
                       f'Total: ${price}\n'
                       f'Enjoy!!! :)',
-                      'bassfoodpizza@gmail.com',
+                      'cinema.nikolina@gmail.com',
                       [user.email])
         except SMTPException:
             return HttpResponse('Invalid')

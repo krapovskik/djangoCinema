@@ -4,8 +4,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
-    path('cinema/', include('cinema.urls'))
+    path('cinema/', include('cinema.urls')),
+    path('', include('cinema.urls')),
 ]
 
 if settings.DEBUG:
