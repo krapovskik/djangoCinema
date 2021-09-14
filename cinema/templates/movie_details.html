@@ -12,14 +12,14 @@
             <div class="project-info-box mt-0">
                 <h5>MOVIE DESCRIPTION</h5>
                 <p class="mb-0">{{ movie.movie_description }}</p>
-            </div><!-- / project-info-box -->
+            </div>
 
             <div class="project-info-box">
                 <p><b>Name:</b> {{ movie.movie_name }}</p>
                 <p><b>Genre:</b> {{ movie.movie_genre }}</p>
                 <p><b>Rating:</b> {{ movie.movie_rating }}/10</p>
                 <p class="mb-0"><b>Price:</b> ${{ movie.movie_price }}</p>
-            </div><!-- / project-info-box -->
+            </div>
 
             <div class="project-info-box mt-0 mb-0">
                 <p class="mb-0">
@@ -42,12 +42,12 @@
                         </form>
                     {% endif %}
                 </p>
-            </div><!-- / project-info-box -->
-        </div><!-- / column -->
+            </div>
+        </div>
 
         <div class="col-md-7">
             <img src="{{ movie.movie_photo.url }}" alt="project-image" class="rounded" style="max-width: 800px;max-height: 600px;">
-        </div><!-- / column -->
+        </div>
     </div>
 </div>
 {% endblock %}
