@@ -6,8 +6,8 @@
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chango" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'forViewMovieButton.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 
 
     {% block new_css %}{% endblock %}
@@ -15,7 +15,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% block new_script %}{% endblock %}
 </head>
-<body>
+<body style="background-position: center;">
+<div class="bg"></div>
+<div style="position: relative;min-height: 1030px">
+<div style="padding-bottom: 300px;">
     <nav class="nav navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -107,6 +110,31 @@
 </nav>
 {% block body %}
 {% endblock %}
+<footer style="position: absolute;bottom:0;height: 330px;width:100%;background-color: black;color: #686c6d;padding-top: 10px;">
+<hr style="height:1px;border:none;background-color: #686c6d">
+    <div style="padding-top:10px;width:80%;margin:0 auto;display: flex;justify-content: space-between;flex-wrap: wrap;height:250px;">
+
+        <div  style="flex-basis: 32%;padding:10px;margin-bottom: 20px;" >
+            <h3>Work hours</h3>
+            <p><i class="glyphicon glyphicon-time"></i> Monday to Friday - 13:00 to 18:00</p>
+            <p><i class="glyphicon glyphicon-time"></i> Saturday - 15:00 tо 23:00</p>
+            <p><i class="glyphicon glyphicon-time"></i> Sunday - 10:00 to 23:00</p>
+        </div >
+        <div  style="flex-basis: 32%;padding:10px;margin-bottom: 20px;" >
+            <h3>Location and contact</h3>
+            <p><i class="glyphicon glyphicon-map-marker"></i> Jane Sandanski 200,Tetovo</p>
+           <p> <i class="glyphicon glyphicon-envelope"></i> cinema.nikolina@gmail.com</p>
+           <p> <i class="glyphicon glyphicon-phone-alt"></i> +38978345678</p>
+
+        </div>
+    <div style="flex-basis: 32%;padding:10px;padding-top:20px;margin-bottom: 20px;">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.6435308518994!2d20.970473315445233!3d42.007925279212174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353f0ea3f27ae73%3A0x84ceb56de5afc9a6!2z0IjQsNC90LUg0KHQsNC90LTQsNC90YHQutC4LCDQotC10YLQvtCy0L4gMTIyMA!5e0!3m2!1smk!2smk!4v1631700452670!5m2!1smk!2smk" width="300px" height="170px" style="border:5px inset #760900; ;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+</div>
+<hr style="height:1px;border:none;background-color: #686c6d">
+</footer>
 </body>
+
 
 </html>

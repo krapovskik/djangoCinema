@@ -18,13 +18,24 @@
                 <p><b>Name:</b> {{ movie.movie_name }}</p>
                 <p><b>Genre:</b> {{ movie.movie_genre }}</p>
                 <p><b>Rating:</b> {{ movie.movie_rating }}/10</p>
+                {% if not movie.movie_comming_soon %}
+                <p><b>Number of sold tickets:</b> {{ movie.movie_num_of_tickets }}/50</p>
+                <p><b>Day and time:</b> {{ movie.movie_day }} at {{ time }}</p>
                 <p class="mb-0"><b>Price:</b> ${{ movie.movie_price }}</p>
+                {% endif %}
             </div>
-
+            {% if not movie.movie_comming_soon or user.is_superuser %}
             <div class="project-info-box mt-0 mb-0">
                 <p class="mb-0">
+                {% if not movie.movie_comming_soon %}
                     <span class="fw-bold mr-10 va-middle hide-mobile">Order your ticket:</span>
                     <a href="{% url 'cinema:order' movie.id %}" class="btn btn-custom">Click here!</a>
+
+                 {% if error_message %}
+                        <br> <br>
+                        <span class="fw-bold mr-10 va-middle hide-mobile text-danger" style="font-size: 15px;">{{ error_message }}</span>
+                    {% endif %}
+                {% endif %}
                     {% if user.is_superuser %}
                         <form action="{% url 'cinema:delete' movie.id %}" method="post" style="display: inline">
                         {% csrf_token %}
@@ -43,6 +54,7 @@
                     {% endif %}
                 </p>
             </div>
+            {% endif %}
         </div>
 
         <div class="col-md-7">

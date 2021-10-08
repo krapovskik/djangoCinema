@@ -3,12 +3,22 @@
     Home
 {% endblock %}
 {% block body %}
-    <div class="jumbotron text-center" style="background: rgba(160, 160, 160,0.3);position: absolute;margin-top: 10%;margin-left: 12.5%;border-radius: 5px;padding: 5% 5% 5% 5%">
+    <div class="jumbotron text-center" style="background: rgba(160, 160, 160,0.3);position: relative;margin-top: 10%;margin-left: 10%;margin-bottom:10%;margin-right:10%;border-radius: 5px;padding: 5% 5% 5% 5%">
         <h1 style="color: white;">
             All your favourite movies in one place!
         </h1>
         <a href="{% url 'cinema:movie' %}" class="btn btn-lg active" id="homeViewMovie" role="button" aria-pressed="true" style="margin-top: 5%;">View movies</a>
-
+        <br>
+        <div><h3 style="color: white">Upcomming movies:</h3></div>
+        <br>
+        <div style="width: 100%;display: flex;justify-content: space-around">
+            {% for movie in movie_list %}
+                <figure style="width: 100px;height: 100px;">
+                    <img src="{{ movie.movie_photo.url }}" alt="" style="width: 100px;height: 100px;">
+                    <figcaption style="color: white"><a href="{% url 'cinema:movie_details' movie.id %}" style="color: white">{{ movie.movie_name }}</a></figcaption>
+                </figure>
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
